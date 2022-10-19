@@ -3,6 +3,8 @@ package system.demoum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping(value = "/cliente/v1/")
 public class Controller {
@@ -17,8 +19,8 @@ public class Controller {
     }
     @GetMapping("{id}")
     @ResponseBody
-    public Cliente getClienteById(@PathVariable Long id){
-        Cliente clienteReturned = repository.getById(id);
+    public Optional<Cliente> getClienteById(@PathVariable Long id){
+        Optional<Cliente> clienteReturned = repository.findById(id);
         return clienteReturned;
     }
 
