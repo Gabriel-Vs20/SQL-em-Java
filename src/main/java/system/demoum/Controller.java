@@ -1,10 +1,7 @@
 package system.demoum;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/cliente/v1/")
@@ -17,6 +14,12 @@ public class Controller {
     public Cliente cliente(@RequestBody Cliente cliente){
         Cliente clienteSaved = repository.save(cliente);
         return clienteSaved;
+    }
+    @GetMapping("{id}")
+    @ResponseBody
+    public Cliente getClienteById(@PathVariable Long id){
+        Cliente clienteReturned = repository.getById(id);
+        return clienteReturned;
     }
 
 }
