@@ -3,6 +3,7 @@ package system.demoum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -22,6 +23,15 @@ public class Controller {
     public Optional<Cliente> getClienteById(@PathVariable Long id){
         Optional<Cliente> clienteReturned = repository.findById(id);
         return clienteReturned;
+    }
+    @DeleteMapping("/{id}")
+    public void deleteClienteById(@PathVariable Long id){
+        repository.deleteById(id);
+
+    }
+    @GetMapping
+    public List<Cliente> listClientes(){
+        return repository.findAll();
     }
 
 }
