@@ -1,7 +1,10 @@
-package system.demoum;
+package system.demoum.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import system.demoum.entity.Cliente;
+import system.demoum.dto.ClienteDTO;
+import system.demoum.repository.Repository;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package system.demoum;
+package system.demoum.dto;
 
 public class ClienteDTO {
 
