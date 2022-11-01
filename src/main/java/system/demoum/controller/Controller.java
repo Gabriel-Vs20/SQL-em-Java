@@ -1,11 +1,13 @@
 package system.demoum.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import system.demoum.entity.Cliente;
 import system.demoum.dto.ClienteDTO;
 import system.demoum.repository.Repository;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,13 +19,13 @@ public class Controller {
     Repository repository;
 
     @PostMapping
-    public Cliente cliente(@RequestBody Cliente cliente){
+    public Cliente cliente(@RequestBody @Valid Cliente cliente){
         Cliente clienteSaved = repository.save(cliente);
         return clienteSaved;
     }
     @GetMapping("{id}")
     @ResponseBody
-    public Optional<Cliente> getClienteById(@PathVariable Long id){
+    public Optional<Cliente> getClienteById(@PathVariable @Validated Long id){
         Optional<Cliente> clienteReturned = repository.findById(id);
         return clienteReturned;
     }
